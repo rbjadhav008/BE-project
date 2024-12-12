@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: RECOMMENDATION-SERVICE
+
+  datasource:
+    url: jdbc:mysql://team-4-travel-blog.cr62uiiem6hr.ap-south-1.rds.amazonaws.com:3306/blog?createDatabaseIfNotExist=true
+    username: admin
+    password: BcHM9AAqvyGh7MJCNFLt
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: 8083
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

@@ -1,0 +1,80 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      # global-filters:
+      #   - name: ForwardedHeaders
+      routes:
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/users/**
+
+
+        - id: ADMIN-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/admin/**
+
+        - id: RECOMMENDATION-SERVICE
+          uri: lb://RECOMMENDATION-SERVICE
+          predicates:
+            - Path=/api/blogs/**
+
+        - id: RECOMMENDATION-SERVICE
+          uri: lb://RECOMMENDATION-SERVICE
+          predicates:
+            - Path=/api/admin/**
+
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:5173,http://localhost:5174,http://localhost:5175"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTIONS
+#          filters:
+#            - name: JwtAuthenticationFilter  # Fixed indentation here
+
+
+
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/user?createDatabaseIfNotExist=true
+#    username: root
+#    password: yadnika@01
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  datasource:
+    url: jdbc:mysql://team-4-travel-blog.cr62uiiem6hr.ap-south-1.rds.amazonaws.com:3306/user?createDatabaseIfNotExist=true
+    username: admin
+    password: BcHM9AAqvyGh7MJCNFLt
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+
+
+  # The below section had incorrect indentation and extra configuration
+
+
+
+jwt:
+  secret:
+    key: "z01PV9vP9w7cAnr5HZFSGBKGGwSznqGldeJhRI9XM/c="

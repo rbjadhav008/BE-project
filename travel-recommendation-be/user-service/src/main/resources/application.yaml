@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: USER-SERVICE
+
+  datasource:
+    url: jdbc:mysql://team-4-travel-blog.cr62uiiem6hr.ap-south-1.rds.amazonaws.com:3306/user?createDatabaseIfNotExist=true
+    username: admin
+    password: BcHM9AAqvyGh7MJCNFLt
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: rbjadhav008@gmail.com
+    password: isqx zdrq bjyv gncn
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8082
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+jwt:
+  secret:
+    key: "z01PV9vP9w7cAnr5HZFSGBKGGwSznqGldeJhRI9XM/c="
+
+
